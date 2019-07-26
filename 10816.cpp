@@ -35,7 +35,7 @@ int upper_bound(int *B,int size,int target){
  
 int main() {
  
-	int N,M_num,num;
+	int N,M_num,num,u,l;
  
 	scanf("%d", &N);
  
@@ -54,8 +54,11 @@ int main() {
     sort(A,A+N);
 
 	for (int i = 0; i < M_num; i++) {
-		num = upper_bound(A,N,M[i])-lower_bound(A,N,M[i]);
-        printf("%d %d\n",upper_bound(A,N,M[i]),lower_bound(A,N,M[i]));
+        u=upper_bound(A,N,M[i]);
+        l=lower_bound(A,N,M[i]);
+		num = u-l;
+        if(u==N-1 && M[i]==A[N-1])
+            ++num;
 		printf("%d ", num);
 	}
 }
